@@ -41,52 +41,87 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Cloud Systems on Online Education</h1>
-					<h3>PATT: Online Education:SUCCESSES, CHALLENGES, and BEST PRACTICES</h3>
+					<h1>Cloud Systems</h1>
+					<h1>On Online Education</h1>
+					<h4>PATT: Online Education:SUCCESSES, CHALLENGES, and BEST PRACTICES</h4>
 					<p>
 						<small>Created by <a href="http://www.qcc.cuny.edu/mathCS/people/KKim.html">KWANG KIM(QCC)</a> and SEONG-JU HAM(QCC)</small>
 					</p>
 				</section>
 
 				<section>
-					<h2>Hello There</h2>
-					<p>
-						reveal.js enables you to create beautiful interactive slide decks using HTML. This presentation will show you examples of what it can do.
-					</p>
+					<h2>Overview</h2>
+					<p>In this talk, we will discuss the following topics.</p>
+					<ul>
+						<li data-fragment-index="0" class="fragment">A quick background of Cloud systems</li>
+						<li data-fragment-index="1" class="fragment">As an Educator: How to build contents using cloud systems.</li>
+						<li data-fragment-index="2" class="fragment">As a student: How to use online cloud systems for the class.</li>
+						<li data-fragment-index="3" class="fragment">Good/Bad</li>
+						<li data-fragment-index="4" class="fragment">Suggestions </li>
+					</ul>
 				</section>
 
 				<!-- Example of nested vertical slides -->
 				<section>
 					<section>
-						<h2>Vertical Slides</h2>
-						<p>Slides can be nested inside of each other.</p>
-						<p>Use the <em>Space</em> key to navigate through all slides.</p>
-						<br>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
+						<h2>Cloud Services</h2>
+						<p>Flexible and on-demand Services that are delivered and consumed in real time over the internet. </p>
+						<table>
+							<tr>
+								<td><img width="200" data-src="https://cf.dropboxstatic.com/static/images/brand/logotype-vflFbF9pY.png"></td>
+								<td><img width="200" data-src="http://cdn.appstorm.net/mac.appstorm.net/mac/files/2013/09/icloud_os7_logo.png"></td>
+								<td><img width="200" data-src="http://static1.squarespace.com/static/5423238fe4b0efb749dca6ee/54232a07e4b09a4121be1d1b/5425d362e4b0e2d40dd952a8/1411765091412/amazon-s3-transparent.png"></td>
+							</tr>
+						</table>
 					</section>
 					<section>
-						<h2>Basement Level 1</h2>
-						<p>Nested slides are useful for adding additional detail underneath a high level horizontal slide.</p>
+						<h2>Virtualization</h2>
+						<p><em>Virtualization</em> is a technology that separates physical infrastructures to create various resources. Virtualization is the main forundation for a cloud.
+						</p>
+
 					</section>
 					<section>
-						<h2>Basement Level 2</h2>
-						<p>That's it, time to go back up.</p>
-						<br>
-						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
+						<h2>Automation tools</h2>
+						<table>
+							<tr>
+								<td><img width="300" data-src="https://blog.abevoelker.com/images/vagrant-logo.png"></td>
+								<td><img width="300" data-src="https://c2a32ff18d23c8f567f0-e44b0df73868b5d567b1e58e01681d15.ssl.cf5.rackcdn.com/2013-11-11-peanut-butter-docker-time/docker-transparent-a007cb0b38b5ca059f2eaa2578a3c6a5.png"></td>
+							</tr>
+						</table>
 					</section>
 				</section>
-
 				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
-				</section>
+					<section>
+						<h2>As an (Math) Educator</h2>
+						<p>-How to Build a content(web, Note, HW, Test) using a cloud.</p>
+						<ul>
+							<li data-fragment-index="0" class="fragment">cloud.sagemath.com</li>
+							<li data-fragment-index="1" class="fragment">cpp.sh</li>
+							<li data-fragment-index="2" class="fragment">github.com</li>
 
+						</ul>
+					</section>
+					<section>
+						<h2><a href="https://cloud.sagemath.com" target="_blank">Sage cloud</a></h2>
+						<p>-<strong>Sage Cloud</strong> is a free cloud version of the sagemath software that provides several open-source packages for professional mathematicians.
+							It is an alternative to Magma, Maple, Mathematica and Matlab.</p>
+						<ul>
+							<li data-fragment-index="0" class="fragment">linux terminals: C++, java, python, ...</li>
+							<li data-fragment-index="1" class="fragment">For statistics: R</li>
+							<li data-fragment-index="2" class="fragment">For math note, slide,...:(Sage) Latex</li>
+							<li data-fragment-index="3" class="fragment">Collaboration with other.(Use latex code).</li>
+						</ul>
+					</section>
+					<section data-background-iframe="https://cloud.sagemath.com/projects/8037cd30-4bc5-4063-91f7-261040fa18b8/files/MA441/HW/MA441-HW10.tex">
+						<h2 style="color:#A8A8A8">Sagemath screenshot: Calculus I</h2>
+					</section>
+					<section data-background-iframe="https://cloud.sagemath.com/projects/a7585c07-394b-42cb-9f1c-185b3f307e7a/files/LEC/LEC31/lec31.tex">
+						<h2 style="color:#A8A8A8">Sagemath screenshot: C++ - Shunting-yard algorithm</h2>
+					</section>
+					<section data-background-iframe="https://cloud.sagemath.com/projects/a7585c07-394b-42cb-9f1c-185b3f307e7a/files/LEC/LEC31/lec31.tex">
+						<h2 style="color:#A8A8A8">Sagemath screenshot: C++ - Shunting-yard algorithm</h2>
+					</section>
+				</section>
 				<section>
 					<h2>Point of View</h2>
 					<p>
