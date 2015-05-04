@@ -1,0 +1,9 @@
+<code data-trim="" contenteditable="" class="c++">
+#include <iostream>     // std::cout
+#include <algorithm>    // std::sort
+#include <vector>       // std::vector
+bool myfunction (int i,int j) { return (i<j); }
+struct myclass {
+bool operator() (int i,int j) { return (i<j);}
+} myobject;
+</code>
