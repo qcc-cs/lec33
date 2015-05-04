@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Patt presentation by KWANG KIM and SEONGJU HAM</title>
+		<title>LEC 33 by KWANG</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab">
@@ -41,239 +41,119 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Cloud Systems</h1>
-					<h1>On Online Education</h1>
-					<h4>PATT: Online Education:SUCCESSES, CHALLENGES, and BEST PRACTICES</h4>
+					<h1>LEC33</h1>
+					<h1>Sort and Search(STL)</h1>
 					<p>
-						<small>Created by <a href="http://www.qcc.cuny.edu/mathCS/people/KKim.html">KWANG KIM(QCC)</a> and SEONG-JU HAM(QCC)</small>
+						<small>Created by <a href="http://www.qcc.cuny.edu/mathCS/people/KKim.html">KWANG KIM(QCC)</a></small>
 					</p>
 				</section>
-
 				<section>
 					<h2>Overview</h2>
 					<p>In this talk, we will discuss the following topics.</p>
 					<ul>
-						<li data-fragment-index="0" class="fragment">A quick background of Cloud systems</li>
-						<li data-fragment-index="1" class="fragment">As an Educator: How to build contents using cloud systems.</li>
-						<li data-fragment-index="2" class="fragment">As a student: How to use online cloud systems for the class.</li>
-						<li data-fragment-index="3" class="fragment">Pros/Cons on a cloud</li>
-						<li data-fragment-index="4" class="fragment">Suggestions </li>
+						<li data-fragment-index="0" class="fragment">STL Sort</li>
+						<li data-fragment-index="1" class="fragment">QUICK Sort</li>
+						<li data-fragment-index="2" class="fragment">STL binary_search</li>
 					</ul>
 				</section>
 
 				<!-- Example of nested vertical slides -->
 				<section>
-					<section>
-						<h2>Cloud Services</h2>
-						<p>Flexible and on-demand Services that are delivered and consumed in real time over the internet. </p>
-						<table>
-							<tr>
-								<td><img width="200" data-src="https://cf.dropboxstatic.com/static/images/brand/logotype-vflFbF9pY.png"></td>
-								<td><img width="200" data-src="http://cdn.appstorm.net/mac.appstorm.net/mac/files/2013/09/icloud_os7_logo.png"></td>
-								<td><img width="200" data-src="http://static1.squarespace.com/static/5423238fe4b0efb749dca6ee/54232a07e4b09a4121be1d1b/5425d362e4b0e2d40dd952a8/1411765091412/amazon-s3-transparent.png"></td>
-							</tr>
-						</table>
-					</section>
-					<section>
-						<h2>Virtualization</h2>
-						<p><em>Virtualization</em> is a technology that separates physical infrastructures to create various resources. Virtualization is the main forundation for a cloud.
-						</p>
+					<h2>Assumption</h2>
+					<p>We assume the following code.</p>
+<pre><code>
+#include &lt;iostream&gt;     // std::cout
+#include &lt;algorithm&gt;    // std::sort
+#include &lt;vector&gt;       // std::vector
+bool myfunction (int i,int j) { return (i&lt;j); }
+struct myclass {
+bool operator() (int i,int j) { return (i&lt;j);}
+} myobject;
+</code></pre>
+				</section>
+				<section>
+					<h2>STL Sort</h2>
+					<p>Sample code</p>
+<pre><code>
+int main () {
+	int myints[] = {32,71,12,45,26,80,53,33};
+	std::vector&lt;int&gt; myvector (myints, myints+8);               // 32 71 12 45 26 80 53 33
+	std::sort (myvector.begin(), myvector.begin()+4);           //(12 32 45 71)26 80 53 33
+	std::sort (myvector.begin()+4, myvector.end(), myfunction); // 12 32 45 71(26 33 53 80)
+	std::sort (myvector.begin(), myvector.end(), myobject);     //(12 26 32 33 45 53 71 80)
+	std::cout &lt;&lt; &quot;myvector contains:&quot;;
+	for (auto &amp; v:myvector){
+		std::cout &lt;&lt; ' ' &lt;&lt; v;
+	}
+	std::cout &lt;&lt; std::endl;
+	return 0;
+}
+</code></pre>
+					<a href="http://www.cplusplus.com/reference/algorithm/sort/" target="_blank">Ref:http://www.cplusplus.com/reference/algorithm/sort/</a><br>
+					<a href="http://cpp.sh/7au2" target="_blank">RUN:http://cpp.sh/7au2</a><br>
+				</section>
+				<style>
+					.reveal table {
+						margin: auto;
+						border-collapse: collapse;
+						border-spacing: 0;
+					}
 
-					</section>
-					<section>
-						<h2>Automation tools</h2>
-						<table>
-							<tr>
-								<td><img width="300" data-src="https://blog.abevoelker.com/images/vagrant-logo.png"></td>
-								<td><img width="300" data-src="https://c2a32ff18d23c8f567f0-e44b0df73868b5d567b1e58e01681d15.ssl.cf5.rackcdn.com/2013-11-11-peanut-butter-docker-time/docker-transparent-a007cb0b38b5ca059f2eaa2578a3c6a5.png"></td>
-							</tr>
-						</table>
-					</section>
+					.reveal table th {
+						font-weight: bold;
+					}
+					.reveal table th,
+					.reveal table td {
+						text-align: left;
+						padding: 0.2em 0.5em 0.2em 0.5em;
+						border-bottom: 1px solid;
+					}
+				</style>
+				<section >
+					<h2>Quick Sort</h2>
+					<p>Quicksort can then recursively sort the sub-arrays by  dividing a large array into two smaller sub-arrays: the low elements and the high elements.</p>
+					<ol>
+						<li>Pick a pivot from the array.</li>
+						<li>Make a partition of the array.
+							<br>
+							<table>
+									<tr>
+										<td>Less than a pivot</td><td>Pivot</td><td>Greater than pivot.</td>
+									</tr>
+							</table>
+						</li>
+						<li>Repeat recursively.</li>
+					</ol>
+				</section>
+				<section >
+					<h2>Quick Sort-EXAMPLE</h2>
+					<img height="650" src="https://s3.amazonaws.com/likeitlearnit/images/QuickSortLarge.png">
 				</section>
 				<section>
-					<section>
-						<h2>As an (Math) Educator</h2>
-						<p>-How to Build a content(web, Note, HW, Test) using a cloud.</p>
-						<ul>
-							<li data-fragment-index="0" class="fragment">cloud.sagemath.com</li>
-							<li data-fragment-index="1" class="fragment">cpp.sh</li>
-							<li data-fragment-index="2" class="fragment">github.com</li>
-
-						</ul>
-					</section>
-					<section>
-						<h2><a href="https://cloud.sagemath.com" target="_blank">Sage cloud</a></h2>
-						<p>-<strong>Sage Cloud</strong> is a free cloud version of the sagemath software that provides several open-source packages for professional mathematicians.
-							It is an alternative to Magma, Maple, Mathematica and Matlab.</p>
-						<ul>
-							<li data-fragment-index="0" class="fragment">linux terminals: C++, java, python, ...</li>
-							<li data-fragment-index="1" class="fragment">For statistics: R</li>
-							<li data-fragment-index="2" class="fragment">For math note, slide,...:(Sage) Latex</li>
-							<li data-fragment-index="3" class="fragment">Collaboration with other.(Use latex code).</li>
-						</ul>
-					</section>
-					<section data-background-iframe="https://cloud.sagemath.com/projects/8037cd30-4bc5-4063-91f7-261040fa18b8/files/MA441/HW/MA441-HW10.tex">
-						<h2 style="color:#A8A8A8">Sagemath: Calculus I</h2>
-					</section>
-					<section data-background-iframe="https://cloud.sagemath.com/projects/a7585c07-394b-42cb-9f1c-185b3f307e7a/files/LEC/LEC31/lec31.tex">
-						<h2 style="color:#A8A8A8">Sagemath: C++ Shunting-yard algorithm</h2>
-					</section>
-					<section>
-						<h2 style="color:#A8A8A8"><a href="https://cloud.sagemath.com/projects/a7585c07-394b-42cb-9f1c-185b3f307e7a/files/LEC/LEC31/lec31.tex" target="_blank">Sagemath:beamer</a></h2>
-						<iframe width="1000" height="600" data-src="https://cloud.sagemath.com/projects/a7585c07-394b-42cb-9f1c-185b3f307e7a/files/LEC/LEC31/lec31.tex"></iframe>
-					</section>
-					<section>
-						<h2 style="color:#A8A8A8"><a href="http://cpp.sh/5l7g" target="_blank">cpp.sh - online compiler</a></h2>
-						<iframe width="900" height="600" data-src="http://cpp.sh/5l7g"></iframe>
-					</section>
-					<section>
-						<h2>Github.com</h2>
-						<p>
-							<strong>GitHub</strong> is a web-based Git repository hosting service. (source code management)
-						</p>
-						<table>
-							<tr>
-								<td>
-									<ul>
-										<li data-fragment-index="0" class="fragment">Free for a public code</li>
-										<li data-fragment-index="1" class="fragment">Free for a private <em>class</em> code</li>
-										<li data-fragment-index="2" class="fragment">This <a href="https://github.com/kwangkim/patt" target="_blank">slide</a> is hosted by github.com</li>
-										<li data-fragment-index="3" class="fragment">Class <a href="http://qcc-cs203.github.io/" target="_blank"target">homepage(static sites)</a></li>
-										<li data-fragment-index="4" class="fragment">Resume for CS students</li>
-									</ul>
-								</td>
-								<td><img width="200" data-src="http://blog.falafel.com/wp-content/uploads/2015/04/GitHub-Mark.png"></td>
-							</tr>
-						</table>
-					</section>
-					<!--
-					<section data-background="#dddddd">
-						<h2 style="color:#A8A8A8">Homepage on Github</h2>
-						<iframe width="900" height="600" data-src="http://qcc-cs203.github.io/"></iframe>
-					</section>
-					-->
+					<h2>STL binary_sort</h2>
+					<p>Sample code</p>
+<pre><code>
+int main () {
+  int myints[] = {1,2,3,4,5,4,3,2,1};
+  std::vector&lt;int&gt; v(myints,myints+9);                         // 1 2 3 4 5 4 3 2 1
+  std::sort (v.begin(), v.end());
+  std::cout &lt;&lt; &quot;looking for a 3... &quot;;
+  if (std::binary_search (v.begin(), v.end(), 3))
+    std::cout &lt;&lt; &quot;found!\n&quot;;
+  else std::cout &lt;&lt; &quot;not found.\n&quot;;
+  std::sort (v.begin(), v.end(), myfunction);
+  std::cout &lt;&lt; &quot;looking for a 6... &quot;;
+  if (std::binary_search (v.begin(), v.end(), 6, myfunction))
+    std::cout &lt;&lt; &quot;found!\n&quot;; else std::cout &lt;&lt; &quot;not found.\n&quot;;
+  return 0;
+}
+</code></pre>
+					<a href="http://www.cplusplus.com/reference/algorithm/binary_search/" target="_blank">Ref:http://www.cplusplus.com/reference/algorithm/binary_search/</a><br>
+					<a href="http://cpp.sh/4tw6" target="_blank">RUN:http://cpp.sh/4tw6</a><br>
 				</section>
-				<section>
-					<section>
-						<h2>As a Student(<em>CS-203</em>)</h2>
-						<h3>Communication/Collaboration</h3>
-						<p>
-							2nd level c++  course (an undergraduate research course)
-						</p>
-						<ul>
-							<li data-fragment-index="0" class="fragment">Regular projects(individual) : student and instructor</li>
-							<li data-fragment-index="1" class="fragment">Team project : team members</li>
-							<li data-fragment-index="2" class="fragment">Collaboration outsider class envirnment is necessary.</li>
-							<li data-fragment-index="3" class="fragment">Email is not efficient.</li>
-						</ul>
-					</section>
-					<section>
-						<h2>Collaboration tools</h2>
-						<ul>
-							<li data-fragment-index="0" class="fragment">c9.io: cloud compiler</li>
-							<li data-fragment-index="1" class="fragment">Github: project source managment</li>
-							<li data-fragment-index="2" class="fragment">Piazza.com: Communication with instructor and team members</li>
-						</ul>
-					</section>
-					<section>
-						<h2 style="color:#A8A8A8"><a href="https://ide.c9.io/kwangkim/patt" target="_blank">c9.io</a></h2>
-						<iframe width="1000" height="600" data-src="https://ide.c9.io/kwangkim/patt"></iframe>
-					</section>
-					<section>
-						<h2>Piazza.com -discussion board</h2>
-						<p> Email is not efficient.</p>
-						<ul>
-							<li data-fragment-index="0" class="fragment">Not easy to search class related emails</li>
-							<li data-fragment-index="1" class="fragment">Hard to share documents or codes</li>
-							<li data-fragment-index="2" class="fragment">Hard to communicate continuously and instantly.</li>
-							<li data-fragment-index="3" class="fragment">Limited data</li>
-						</ul>
-						<p> Piazza.com</p>
-						<ul>
-							<li data-fragment-index="0" class="fragment">Discussion board only for the class</li>
-							<li data-fragment-index="1" class="fragment">Easy to upload and share files</li>
-							<li data-fragment-index="2" class="fragment">Continuous conversation, private chat and <strong>push nortification</strong> with smart phone/tablet/email. </li>
-							<li data-fragment-index="3" class="fragment">Free and no limit</li>
-						</ul>
-					</section>
-					<section>
-						<h2 style="color:#A8A8A8"><a href="https://piazza.com/class/i5cz0ovsxzq146" target="_blank">Piazza.com</a></h2>
-						<iframe width="1000" height="700" data-src="https://piazza.com/class/i5cz0ovsxzq146"></iframe>
-					</section>
-				</section>
-				<section>
-					<h2>Pros on a cloud</h2>
-					<ul>
-						<li data-fragment-index="0" class="fragment">
-							<p>Simple</p>
-							<ul>
-								<li>We only need a browser.</li>
-								<li>Same environment: in class or home</li>
-							</ul>
-						</li>
-						<li data-fragment-index="1" class="fragment">
-							<p>Synced</p>
-							<ul>
-								<li>Up-to-date. No flash-drive.</li>
-								<li>Revision. History.</li>
-							</ul>
-						</li>
-						<li data-fragment-index="2" class="fragment">
-							<p>Cheap</p>
-							<ul>
-								<li>Free or cheap cloud systems</li>
-								<li>Easy maintenance: No OS/program installation/updates</li>
-							</ul>
-						</li>
-						<li data-fragment-index="3" class="fragment"><p>Online education friendly.</p></li>
-					</ul>
-				</section>
-				<section>
-					<h2>Cons on a cloud</h2>
-
-					<ul>
-						<li data-fragment-index="0" class="fragment">
-							<p>Slower or weaker</p>
-							<ul>
-								<li>Sometimes slower than desktop programs.</li>
-								<li>May not provide full functionaries.</li>
-							</ul>
-						</li>
-						<li data-fragment-index="1" class="fragment">
-							<p>Unstable</p>
-							<ul>
-								<li>Internet is necessary.</li>
-								<li>Some free servers are not stable.</li>
-							</ul>
-						</li>
-						<li data-fragment-index="2" class="fragment">
-							<p>Not fully mobile friendly</p>
-							<ul>
-								<li>Sometimes does not work well with mobile devices.</li>
-								<li>But it is getting better.</li>
-							</ul>
-						</li>
-					</ul>
-				</section>
-				<section>
-					<h2>Suggestions</h2>
-					<h3 data-fragment-index="1" class="fragment">KWANG</h3>
-					<p data-fragment-index="1" class="fragment">One combied cloud system</p>
-					<ul>
-						<li data-fragment-index="1" class="fragment">Content developing</li>
-						<li data-fragment-index="1" class="fragment">Student management/communication</li>
-						<li data-fragment-index="1" class="fragment">Automated Assessment system</li>
-					</ul>
-					<br>
-					<h3 data-fragment-index="2" class="fragment">SEONGJU</h3>
-					<p data-fragment-index="2" class="fragment">Simple system for education</p>
-					<ul>
-						<li data-fragment-index="2" class="fragment">Education purpose system</li>
-						<li data-fragment-index="2" class="fragment">Easier system for beginer</li>
-					</ul>
-				</section>
-				<section>
-					<h1>Any Questions?</h1>
+				<section >
+					<h2>Binary Search <br>for an ordered tree</h2>
+					<img height="500" src="http://upload.wikimedia.org/wikipedia/commons/d/da/Binary_search_tree.svg">
 				</section>
 			</div>
 		</div>
@@ -290,21 +170,18 @@
 				progress: true,
 				history: true,
 				center: true,
-
 				transition: 'slide', // none/fade/slide/convex/concave/zoom
-
 				// Optional reveal.js plugins
 				dependencies: [
 					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					//{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					//{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					//{ src: 'plugin/zoom-js/zoom.js', async: true },
 					{ src: 'plugin/notes/notes.js', async: true }
 				]
 			});
 
 		</script>
-
 	</body>
 </html>
